@@ -7,10 +7,11 @@ public class Main {
 
 
     public static void main(String[] args) {
+        String repeatSwitch="";
         String searchQuery="";
         Scanner keyboard = new Scanner(System.in);
         ArrayList<Person> addressBook = new ArrayList<Person>();
-        for (int counter = 0; counter < 2; counter++) {
+        while(!repeatSwitch.equalsIgnoreCase("Quit")){
             Person person = new Person();
             System.out.println("Enter first name: ");
 
@@ -24,6 +25,8 @@ public class Main {
             System.out.println("Enter email: ");
             person.setEmail(keyboard.nextLine());
             addressBook.add(person);
+            System.out.println("Would you like to continue? Enter any key to continue or 'quit' to exit");
+            repeatSwitch=keyboard.nextLine();
         }
         for (Person entry : addressBook) {
             System.out.println("First Name: " + entry.getFirstName());
@@ -37,12 +40,19 @@ public class Main {
         //search
         System.out.println("Enter first name to search: ");
         searchQuery= keyboard.nextLine();
+boolean foundResult=false;
+
+
         for (Person entry : addressBook) {
             if (entry.getFirstName().equalsIgnoreCase(searchQuery)) {
                 System.out.println("First Name: " + entry.getFirstName());
                 System.out.println("Last Name: " + entry.getLastName());
+            foundResult= true;
             }
 
+        }
+        if (foundResult==false){
+            System.out.println("No results matching search");
         }
     }
 }
