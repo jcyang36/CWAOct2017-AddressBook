@@ -5,12 +5,15 @@ import java.util.Scanner;
 
 public class Main {
 
+
     public static void main(String[] args) {
+        String searchQuery="";
+        Scanner keyboard = new Scanner(System.in);
         ArrayList<Person> addressBook = new ArrayList<Person>();
         for (int counter = 0; counter < 2; counter++) {
             Person person = new Person();
             System.out.println("Enter first name: ");
-            Scanner keyboard = new Scanner(System.in);
+
             person.setFirstName(keyboard.nextLine());
             System.out.println("Enter last name: ");
             person.setLastName(keyboard.nextLine());
@@ -32,12 +35,14 @@ public class Main {
 
 
         //search
-//        for (Person entry : addressBook) {
-//            if (entry.getFirstName().equalsIgnoreCase("Bob")) {
-//                System.out.println("First Name: " + entry.getFirstName());
-//                System.out.println("Last Name: " + entry.getLastName());
-//            }
-//
-//        }
+        System.out.println("Enter first name to search: ");
+        searchQuery= keyboard.nextLine();
+        for (Person entry : addressBook) {
+            if (entry.getFirstName().equalsIgnoreCase(searchQuery)) {
+                System.out.println("First Name: " + entry.getFirstName());
+                System.out.println("Last Name: " + entry.getLastName());
+            }
+
+        }
     }
 }
